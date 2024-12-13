@@ -39,10 +39,10 @@ const addProduct = async (req, res) => {
 // Edit a product
 const editProduct = async (req, res) => {
     try {
-        const {sku, name, description, quantity, price } = req.body;
+        const {sku, name, description, quantity, price, favorite } = req.body;
         const images = "Random Image Path";
 
-        const product = await Product.findByIdAndUpdate(req.params.id, { name, description, quantity, price, images }, { new: true });
+        const product = await Product.findByIdAndUpdate(req.params.id, { name, description, quantity, price, favorite, images}, { new: true });
         res.status(200).json(product);
     } catch (err) {
         res.status(500).json({ message: err.message });
