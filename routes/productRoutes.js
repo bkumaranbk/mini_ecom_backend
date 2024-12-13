@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAllProducts, deleteProduct, addProduct, editProduct } = require('../controllers/productController');
+const { getAllProducts, deleteProduct, addProduct, editProduct, getAllFav, updateFavourite } = require('../controllers/productController');
 const multer = require('multer');
 
 // Multer setup for image uploads
@@ -19,6 +19,8 @@ router.post('/add', upload.array('images', 5), addProduct); // Adding multiple i
 router.get('/', getAllProducts); // Get all products
 router.delete('/delete/:id', deleteProduct); // Delete product
 router.put('/edit/:id', upload.array('images', 5), editProduct); // Edit product
+router.get('/favourite', getAllFav); // Fav product
+router.patch('/favourite/:id', updateFavourite); // Update Fav
 
 
 module.exports = router;

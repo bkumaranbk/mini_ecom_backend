@@ -6,6 +6,8 @@ require('dotenv').config()
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const productRoutes = require('./routes/productRoutes');
 app.use('/api/products', productRoutes);
 
